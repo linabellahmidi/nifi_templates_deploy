@@ -21,6 +21,8 @@ response = requests.post(
     files={'template': ('template.xml', template_data)}
 )
 
+print('first req sent')
+
 if response.status_code != 201:
     print("Failed to upload template XML:", response.text)
     exit()
@@ -38,6 +40,7 @@ if response.status_code != 201:
     print("Failed to import template:", response.text)
     exit()
 
+print('second req sent')
 imported_template_id = response.json()['template']['id']
 
 # Step 3: Instantiate the imported template
@@ -47,6 +50,7 @@ response = requests.post(
     json={'templateId': imported_template_id}
 )
 
+print('third req sent')
 if response.status_code == 201:
     print("Template deployed successfully.")
 else:
