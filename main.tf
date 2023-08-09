@@ -15,15 +15,15 @@ resource "null_resource" "get_ns" {
   }
 }
 
-resource "null_resource" "change_dir" {
-  depends_on = [null_resource.get_ns]
-  provisioner "local-exec" {
-    command = "cd 'C:\\Users\\Achraf OUJJIR\\Desktop\\Nifikop\\nifi_templates_deploy'"
-  }
-}
+#resource "null_resource" "change_dir" {\
+  #depends_on = [null_resource.get_ns]
+  #provisioner "local-exec" {
+    #command = "cmd.exe /c cd /d 'C:\\Users\\Achraf OUJJIR\\Desktop\\Nifikop\\nifi_templates_deploy'"
+  #}
+#}
 
 resource "null_resource" "execute_script" {
-  depends_on = [null_resource.change_dir]
+  depends_on = [null_resource.kubectl_configure]
   provisioner "local-exec" {
     command = "C:/Python311/python.exe ./works_well/deploy_template.py"
   }
