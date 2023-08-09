@@ -8,12 +8,12 @@ resource "null_resource" "kubectl_configure" {
   }
 }
 
-resource "null_resource" "get_ns" {
+/* resource "null_resource" "get_ns" {
   depends_on = [null_resource.kubectl_configure]
   provisioner "local-exec" {
     command = "kubectl get ns"
   }
-}
+} */
 
 #resource "null_resource" "change_dir" {\
   #depends_on = [null_resource.get_ns]

@@ -8,10 +8,7 @@ timeout 20
 helm install zookeeper bitnami/zookeeper --namespace=nifi --set resources.requests.memory=256Mi --set resources.requests.cpu=250m --set resources.limits.memory=256Mi --set resources.limits.cpu=250m --set networkPolicy.enabled=true --set replicaCount=3 --set namespaces={"nifi"}
 timeout 10
 kubectl get pod -n nifi
-minikube status
-kubectl get pod -n nifi
 kubectl create -n nifi -f C:\persistentnificluster.yaml
 kubectl get pod -n nifi
 kubectl port-forward --namespace nifi service/simplenifi-headless 8080:8080
 kubectl get NifiCluster -n nifi
-kubectl get NifiCluster simplenifi -n nifi -o yaml
